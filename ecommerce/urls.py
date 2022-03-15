@@ -24,6 +24,7 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('vendor/login', views.vendorlogin, name='vendorlogin'),
     path('vendor/signup', views.vendorsignup, name='vendorsignup'),
+    path('vendor/dashboard', views.vendorDashboard, name='vendorDashboard'),
     path('store/', include('store.urls')),
     path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),

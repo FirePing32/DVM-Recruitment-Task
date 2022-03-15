@@ -2,9 +2,10 @@
 {% block body_block %}
 {% if user.is_authenticated %}
   {% if user.vendordetail.is_vendor %}
-  <h2>{{ user.vendordetail.vendordesc }}</h2>
+  <h2>ACCESS DENIED !</h2>
+  <h3>Please use a user account to login.</h3>
   {% else %}
-  <h2>User is not vendor</h2>
+  <h2>Welcome, {{ user.first_name }}</h2>
   {% endif %}
 {% endif %}
 {% endblock %}

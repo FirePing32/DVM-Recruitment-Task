@@ -1,12 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from store.forms import UserForm, UserDetailForm, VendorForm, VendorDetailForm
 from django.urls import reverse
+from .models import Item
 
 def index(request):
-    return render(request, 'store/index.html')
+    if request.user.is_authenticated and request.user.vendordetail.is_vendor:
+        return redirect('vendorDashboard')
+    else:
+        store_items = Item.objects.all()
+        return render(request, 'store/index.html', {'store_items':store_items})
 
 def user_login(request):
     if request.method == 'POST':
@@ -90,3 +95,7 @@ def vendorsignup(request):
                           {'vendor_form':vendor_form,
                            'vendor_detail_form':vendor_detail_form,
                            'registered':registered})
+
+@login_required
+def vendorDashboard(request):
+    return render(request, 'store/vendor/dashboard.html')

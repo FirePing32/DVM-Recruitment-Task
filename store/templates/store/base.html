@@ -50,9 +50,6 @@
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
             {% if user.is_authenticated %}
             {% if user.vendordetail.is_vendor %}
-            <li>
-              <a class="dropdown-item" href="#">Dashboard</a>
-            </li>
             </li>
             <li>
               <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
