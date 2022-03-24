@@ -56,10 +56,10 @@
             </li>
             {% else %}
             <li>
-              <a class="dropdown-item" href="#">Dashboard</a>
+              <a class="dropdown-item" href="{% url 'userDashboard' %}">Dashboard</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">Cart</a>
+              <a class="dropdown-item" href="{% url 'cart' %}">Cart</a>
             </li>
             <li>
               <a class="dropdown-item" href="#">Wishlist</a>

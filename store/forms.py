@@ -1,7 +1,6 @@
 from django import forms
-from store.models import UserDetail, VendorDetail
+from store.models import UserDetail, VendorDetail, Item
 from django.contrib.auth.models import User
-from django.forms import widgets
 
 class UserForm(forms.ModelForm):
     first_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
@@ -39,3 +38,11 @@ class VendorDetailForm(forms.ModelForm):
         model = VendorDetail
         fields = ('vendordesc',)
 
+class ItemForm(forms.ModelForm):
+    itemname = forms.CharField(required=True, widget=forms.TextInput(attrs={'class':'form-control'}))
+    itemdesc = forms.CharField(required=True, widget=forms.TextInput(attrs={'class':'form-control'}))
+    itemprice = forms.IntegerField(required=True, min_value=1, widget=forms.NumberInput(attrs={'class':'form-control'}))
+
+    class Meta():
+        model = Item
+        fields = ('itemname', 'itemdesc', 'itemprice')
