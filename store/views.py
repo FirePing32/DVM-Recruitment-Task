@@ -209,7 +209,7 @@ def cart(request):
             else:
                 UserOrders.objects.create(user=request.user, item=item.item, quantity=1)
 
-        Cart.objects.all().delete()
+        Cart.objects.filter(user=request.user).delete()
         checkout = True
 
     return render(request, 'store/cart.html',
