@@ -7,7 +7,9 @@
 {% else %}
 <div class="row mt-5">
   <div class="col-md-6 row align-items-center mt-2 justify-content-center">
-    <img src="https://via.placeholder.com/150" class="w-50" />
+    {% for item in itemobj %}
+    <img src="{{ item.itemimg.url }}" class="w-50" />
+    {% endfor %}
   </div>
   <div class="col-md-6 mt-2 float-start">
     {% for item in itemobj %}
@@ -48,6 +50,9 @@
         <button type="submit" class="btn mt-4 btn-primary btn-lg w-25">Submit</button><br>
         {% if reviewStatus %}
         <p class="d-inline fs-4 text-success">Review submitted !</p>
+        {% endif %}
+        {% if exists %}
+        <p class="d-inline fs-4 text-danger">You have already reviewed this product !</p>
         {% endif %}
       </div>
       </form>
