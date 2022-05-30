@@ -26,7 +26,7 @@ class VendorForm(forms.ModelForm):
     last_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
     email = forms.EmailField(widget=forms.TextInput(attrs={'class':'form-control'}))
     username = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control', 'type':'username', 'id':'exampleInputEmail1'}))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control', 'type':'password', 'id':'exampleInputPassword1'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control', 'type':'password', 'id':'exampleInputPassword1'}), validators=[validate_password])
 
     class Meta():
         model = User
